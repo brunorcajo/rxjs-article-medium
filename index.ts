@@ -11,8 +11,8 @@ const fetchFake$ = new Observable((subscriber) => {
       ],
     });
 
-    subscriber.complete();
-  }, 5000);
+    //subscriber.complete();
+  }, 3000); 
 
   return () => {
     clearInterval(fetch);
@@ -26,3 +26,7 @@ const observer = {
 };
 
 const subscriber = fetchFake$.subscribe(observer);
+
+setTimeout(() => {
+  subscriber.unsubscribe();
+}, 5000)
